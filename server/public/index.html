@@ -1,64 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="PetHotelApp">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="vendors/jquery-3.2.1.min.js"></script>
+    <script src="vendors/angular.js"></script>
     <script src="scripts/client.js"></script>
     <link rel="stylesheet" hrel="styles/styles.css">
     <title>PET HOTEL</title>
 </head>
 
-<body>
-    <header>
+<body >
+    <header ng-controller="OwnerController as vm">
         <h1>Coolest Pet Hotel</h1>
-    </header>
+
         <div>
-    <h2>Owner Registration</h2>
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" />
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" />
-        <button id="register">Register</button>
+            <h2>Owner Registration</h2>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" ng-model="vm.newOwner.first_name" />
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" ng-model="vm.newOwner.last_name" />
+            <button id="register" ng-click="vm.addOwner(vm.newOwner)">Register</button>
+        </div>
+
+        <h2>Pets</h2>
+        <label for="owner_name">Owner Name:</label>
+        <select name="id">
+            <option ng-repeat="owner in vm.ownerArray">
+                {{owner.first_name}} {{owner.last_name}}
+            </option>
+        </select>
+    </header>
+
+    <label for="pet_name">Pet Name:</label>
+    <input type="text" name="name" />
+
+    <label for="breed">Breed:</label>
+    <input type="text" name="breed" />
+
+
+    <label for="color">Color:</label>
+    <input type="text" name="color" />
+
+    <button id="add-pet">Add Pet</button>
     </div>
 
-    <h2>Pets</h2>
-        <label for="owner_name">Owner Name:</label>
-        <select id="owner-options" name="id"><option value=owner></option></select>
+    <table id="pet-table">
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Pet</th>
+            <th>Breed</th>
+            <th>Color</th>
+            <th>Update</th>
+            <th>Delete</th>
+            <th>Check in/out</th>
+        </thead>
+        <tbody id='table-body'>
+        </tbody>
+    </table>
 
 
-        <label for="pet_name">Pet Name:</label>
-        <input type="text" id="pet_name" name="name" />
-
-        <label for="breed">Breed:</label>
-        <input type="text" id="breed" name="breed" />
-
-
-        <label for="color">Color:</label>
-        <input type="text" id="color" name="color" />
-
-        <button id="add-pet">Add Pet</button>
-        </div>
-
-        <table id="pet-table">
-            <thead>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Pet</th>
-                <th>Breed</th>
-                <th>Color</th>
-                <th>Update</th>
-                <th>Delete</th>
-                <th>Check in/out</th>
-            </thead>
-            <tbody id='table-body'>
-            </tbody>
-        </table>
-
-
-        </div>
+    </div>
 
 
 
