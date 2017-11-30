@@ -44,7 +44,7 @@ router.post('/', function (req, res) {
             // We connected to the database!!!
             // Now, we're going to GET things from thd DB
             client.query(`INSERT INTO pets ("name", breed, color,owner_id)
-            VALUES ($1, $2, $3, $4);`, [ req.body.pet_name, req.body.breed, req.body.color, req.body.owner_id], function (errorMakingQuery, result) {
+            VALUES ($1, $2, $3, $4);`, [ req.body.name, req.body.breed, req.body.color, req.body.owner_id], function (errorMakingQuery, result) {
                 done();
                 if (errorMakingQuery) {
                     // Query failed. Did you test it in Postico?

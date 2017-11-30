@@ -11,8 +11,8 @@
     <title>PET HOTEL</title>
 </head>
 
-<body >
-    <header ng-controller="OwnerController as vm">
+<body ng-controller="OwnerController as vm" >
+    <header >
         <h1>Coolest Pet Hotel</h1>
 
         <div>
@@ -26,25 +26,21 @@
 
         <h2>Pets</h2>
         <label for="owner_name">Owner Name:</label>
-        <select name="id">
-            <option ng-repeat="owner in vm.ownerArray">
-                {{owner.first_name}} {{owner.last_name}}
-            </option>
-        </select>
+        <select name="id" ng-options="owner as owner.first_name for owner in vm.ownerArray"ng-model="vm.newPet.owner">
+        </select>     
     </header>
-
+    <div>
     <label for="pet_name">Pet Name:</label>
-    <input type="text" name="name" />
+    <input type="text" name="name" ng-model="vm.newPet.name"/>
 
     <label for="breed">Breed:</label>
-    <input type="text" name="breed" />
+    <input type="text" name="breed" ng-model="vm.newPet.breed"/>
 
 
     <label for="color">Color:</label>
-    <input type="text" name="color" />
+    <input type="text" name="color" ng-model="vm.newPet.color"/>
 
-    <button id="add-pet">Add Pet</button>
-    </div>
+    <button ng-click="vm.addPet(vm.newPet)">Add Pet</button>
 
     <table id="pet-table">
         <thead>
@@ -58,6 +54,16 @@
             <th>Check in/out</th>
         </thead>
         <tbody id='table-body'>
+            <tr ng-repeat="pet in vm.petArray">
+                <td>{{pet.first_name}}</td>
+                <td>{{pet.last_name}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.breed}}</td>
+                <td>{{pet.color}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </tbody>
     </table>
 
